@@ -1,0 +1,51 @@
+{
+    "name": "meshlink",
+    "version": "0.0.0",
+    "private": true,
+    "description": "WebRTC video conferencing platform with mesh topology",
+    "author": "Aidamir Kambiev / Resolve Studio",
+    "license": "MIT",
+    "engines": {
+        "node": ">=22.17.0",
+        "pnpm": ">=10.17.1"
+    },
+    "packageManager": "pnpm@10.17.1",
+    "scripts": {
+        "dev": "pnpm --parallel --stream run dev",
+        "dev:backend": "pnpm --filter @meshlink/backend dev",
+        "dev:frontend": "pnpm --filter @meshlink/frontend dev",
+        "build": "pnpm --recursive run build",
+        "build:backend": "pnpm --filter @meshlink/backend build",
+        "build:frontend": "pnpm --filter @meshlink/frontend build",
+        "start:backend": "pnpm --filter @meshlink/backend start",
+        "start:frontend": "pnpm --filter @meshlink/frontend preview",
+        "lint": "pnpm --recursive run lint",
+        "lint:fix": "pnpm --recursive run lint:fix",
+        "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yaml,yml}\"",
+        "prepare": "husky",
+        "clean": "pnpm --recursive exec rm -rf node_modules dist build .next .turbo coverage",
+        "install:all": "pnpm install"
+    },
+    "keywords": [
+        "webrtc",
+        "video-conference",
+        "mesh-network",
+        "signaling-server",
+        "nestjs",
+        "react",
+        "vite",
+        "typescript"
+    ],
+    "devDependencies": {
+        "@commitlint/cli": "^20.0.0",
+        "@commitlint/config-conventional": "^20.0.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.2.1",
+        "prettier": "^3.6.2"
+    },
+    "lint-staged": {
+        "*.{ts,tsx,js,jsx,json,md,yaml,yml}": [
+            "prettier --write"
+        ]
+    }
+}

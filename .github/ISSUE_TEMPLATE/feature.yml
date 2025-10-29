@@ -1,0 +1,41 @@
+name: 'Feature / Improvement'
+description: New functionality or enhancement
+title: '[feat] <short summary>'
+labels: ['type: improvement']
+body:
+    - type: textarea
+      id: problem
+      attributes:
+          label: Problem / Motivation
+          description: What problem would this feature solve or why is it needed?
+          placeholder: Describe the underlying issue or motivation.
+      validations:
+          required: true
+
+    - type: textarea
+      id: solution
+      attributes:
+          label: Proposed Solution
+          description: Describe your proposed solution or implementation idea.
+          placeholder: Explain the new functionality, workflow, or API changes.
+      validations:
+          required: true
+
+    - type: textarea
+      id: acceptance
+      attributes:
+          label: Acceptance Criteria
+          description: Define measurable conditions for considering this feature complete.
+          placeholder: |
+              - [ ] Criterion A
+              - [ ] Criterion B
+              - [ ] Criterion C
+      validations:
+          required: true
+
+    - type: textarea
+      id: notes
+      attributes:
+          label: Additional Notes (optional)
+          description: Add references, links, or related ideas.
+          placeholder: Links to discussions, mockups, or related issues.

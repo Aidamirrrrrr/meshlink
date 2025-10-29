@@ -1,0 +1,53 @@
+name: CI
+
+on:
+    push:
+        branches: [production, develop]
+    pull_request: {}
+
+jobs:
+    lint-and-build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node: [22.17.0]
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 10.17.1
+
+            - name: Use Node.js ${{ matrix.node }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node }}
+                  cache: 'pnpm'
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Lint all packages
+              run: pnpm lint
+
+            - name: Build backend
+              run: pnpm build:backend
+
+            - name: Build frontend
+              run: pnpm build:frontend
+
+            - name: Run backend tests
+              run: pnpm test
+
+            - name: Run commitlint
+              run: |
+                  if [ "${{ github.event_name }}" = "pull_request" ]; then
+                    pnpm dlx commitlint --from=${{ github.event.pull_request.base.sha }} --to=${{ github.sha }}
+                  else
+                    pnpm dlx commitlint --from=$(git rev-list --max-parents=0 HEAD) --to=HEAD
+                  fi

@@ -1,0 +1,49 @@
+name: 'Task / Chore'
+description: Routine development task or configuration work
+title: '[task] <short summary>'
+labels: ['type: chore']
+body:
+    - type: textarea
+      id: goal
+      attributes:
+          label: Goal
+          description: What should be achieved?
+          placeholder: Briefly describe the objective.
+      validations:
+          required: true
+
+    - type: textarea
+      id: steps
+      attributes:
+          label: Checklist / Steps
+          description: Break the task into actionable steps.
+          value: |
+              - [ ] Step 1
+              - [ ] Step 2
+
+    - type: textarea
+      id: acceptance
+      attributes:
+          label: Acceptance criteria
+          description: How will we know the task is done?
+          placeholder: |
+              - [ ] Measurable outcome A
+              - [ ] Measurable outcome B
+      validations:
+          required: true
+
+    - type: textarea
+      id: deps
+      attributes:
+          label: Dependencies / Links (optional)
+          description: Related issues, PRs, docs, or external blockers.
+          placeholder: |
+              - Relates to #123
+              - Blocked by #456
+
+    - type: textarea
+      id: notes
+      attributes:
+          label: Additional notes (optional)
+          description: Context, risks, out of scope, or implementation hints.
+          placeholder: Non-goals, trade-offs, edge cases, etc.

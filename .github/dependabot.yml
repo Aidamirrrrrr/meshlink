@@ -1,0 +1,13 @@
+version: 2
+updates:
+    - package-ecosystem: 'npm'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
+      allow:
+          - dependency-type: 'development'
+      commit-message:
+          prefix: 'deps'
+      labels:
+          - 'type: improvement'
+          - 'status: review'

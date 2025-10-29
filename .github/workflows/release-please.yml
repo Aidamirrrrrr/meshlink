@@ -1,0 +1,28 @@
+name: Release Please
+
+on:
+    push:
+        branches:
+            - production
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    release-please:
+        runs-on: ubuntu-latest
+        steps:
+            - id: release-please
+              uses: googleapis/release-please-action@v4
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  target-branch: production
+
+            - name: Add labels to release PR
+              if: ${{ steps.release-please.outputs.pr }}
+              uses: actions-ecosystem/action-add-labels@v1
+              with:
+                  labels: |
+                      type: improvement
+                      status: review
