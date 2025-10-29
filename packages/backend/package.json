@@ -1,6 +1,6 @@
 {
     "name": "@meshlink/backend",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "author": "Aidamir Kambiev / Resolve Studio",
     "private": true,
     "license": "MIT",
